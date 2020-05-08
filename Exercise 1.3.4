@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dsa;
+import java.util.Scanner;
+/**
+ *
+ * @author Saugat Poudel
+ */
+public class DSA {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        FixedStack<Character> fs = new FixedStack(10);
+        Scanner reader = new Scanner(System.in);
+        String s = reader.nextLine();
+        boolean flag = true;
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '{' || s.charAt(i) == '[' || s.charAt(i) == '('){
+                fs.push(s.charAt(i));
+            }else{
+                char bracket = fs.pop();
+                //System.out.println("Bracket is ==> "+bracket);
+                if(bracket == '['){
+                    if(s.charAt(i) != ']'){
+                        System.out.println("False");
+                        flag = false;
+                        break;
+                    }
+                } else if(bracket == '{'){
+                    if(s.charAt(i) != '}'){
+                        System.out.println("False");
+                        flag = false;
+                        break;
+                    }
+                } else if(bracket == '('){
+                    if(s.charAt(i) != ')'){
+                        System.out.println("False");
+                        flag = false;
+                        break;
+                    }
+                }else{
+                    System.out.println("Something went wrong.");
+                    flag = false;
+                }
+            }
+        }
+        if(flag)
+        System.out.println("True");
+    }
+    
+    
+    
+    
+    
+    
+}
+
